@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Little Ritual</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Elegant Serif and Sans-Serif Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #FDFBF7; color: #2C2A29; }
+        .serif { font-family: 'Cormorant Garamond', serif; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Global Navigation Header -->
+    <header class="border-b border-stone-200 bg-[#FDFBF7] sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <nav class="hidden md:flex space-x-8 text-xs tracking-widest uppercase font-medium text-stone-600">
+                <a href="#" class="hover:text-stone-900">About</a>
+                <a href="#" class="hover:text-stone-900">Shop</a>
+                <a href="#" class="hover:text-stone-900">Rewards</a>
+                <a href="#" class="hover:text-stone-900">Bundles</a>
+                <a href="#" class="hover:text-stone-900">FAQs</a>
+            </nav>
+            
+            <div class="text-center">
+                <a href="/" class="serif text-2xl tracking-wide uppercase font-semibold">The Little Ritual</a>
+            </div>
+            
+            <div class="flex items-center space-x-4 text-xs tracking-widest uppercase font-medium text-stone-600">
+                <a href="#" class="hover:text-stone-900">Search</a>
+                <a href="/checkout" class="hover:text-stone-900">Cart</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dynamic Main Content -->
+    <main class="flex-grow">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="bg-[#F6F3EE] border-t border-stone-200 py-16 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center md:text-left">
+            <div>
+                <h3 class="serif text-xl mb-4 italic">Join Our Community</h3>
+                <div class="flex max-w-sm mx-auto md:mx-0 border-b border-stone-400 py-2">
+                    <input type="email" placeholder="EMAIL" class="w-full bg-transparent text-xs tracking-widest focus:outline-none uppercase">
+                    <button class="text-xs tracking-widest font-medium">→</button>
+                </div>
+            </div>
+            <div class="flex justify-center space-x-12 text-xs tracking-widest uppercase font-medium text-stone-500">
+                <div class="flex flex-col space-y-2">
+                    <a href="#" class="hover:text-stone-900">About</a>
+                    <a href="#" class="hover:text-stone-900">Shop</a>
+                    <a href="#" class="hover:text-stone-900">Rewards</a>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <a href="#" class="hover:text-stone-900">Sale</a>
+                    <a href="#" class="hover:text-stone-900">FAQs</a>
+                    <a href="#" class="hover:text-stone-900">Support</a>
+                </div>
+            </div>
+            <div class="md:text-right">
+                <p class="serif text-lg tracking-wide uppercase font-medium">The Little Ritual</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Hero Banner Section -->
+<section class="relative h-[65vh] bg-cover bg-center bg-stone-700 flex items-center px-8 md:px-24" style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/static/images/cozy-hero.jpg');">
+    <div class="max-w-xl text-white">
+        <h1 class="serif text-4xl md:text-6xl font-light leading-tight mb-4">The Secret to<br>A Cozy Home</h1>
+        <p class="text-sm md:text-base font-light tracking-wide text-stone-200 mb-8 max-w-sm">
+            Fill your space with fragrances that feel like a warm blanket and a quiet evening in.
+        </p>
+        <a href="#" class="inline-block border border-white text-xs tracking-widest uppercase font-medium px-8 py-3 hover:bg-white hover:text-stone-900 transition duration-300">Shop</a>
+    </div>
+</section>
+
+<!-- Featured Product Grid Section -->
+<section class="max-w-7xl mx-auto px-6 py-20">
+    <h2 class="serif text-2xl tracking-widest uppercase text-center font-medium mb-12">Featured</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        
+        <!-- Eucalyptus Candle -->
+        <div class="text-center flex flex-col justify-between">
+            <a href="/product/eucalyptus" class="group block mb-4 overflow-hidden bg-stone-100">
+                <img src="/static/images/eucalyptus.png" alt="Eucalyptus Candle" class="w-full h-80 object-cover group-hover:scale-102 transition duration-500">
+            </a>
+            <div>
+                <h3 class="serif text-xl tracking-wide uppercase font-medium">Eucalyptus</h3>
+                <p class="text-xs text-stone-500 uppercase tracking-widest mb-4">Stack 7 OZ Candle</p>
+                <p class="text-sm text-stone-700 font-medium mb-4">$28.00</p>
+                <button class="w-full border border-stone-800 text-stone-800 text-xs tracking-widest uppercase font-medium py-3 hover:bg-stone-800 hover:text-white transition duration-300">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Sandalwood Candle -->
+        <div class="text-center flex flex-col justify-between">
+            <a href="/product/sandalwood" class="group block mb-4 overflow-hidden bg-stone-100">
+                <img src="/static/images/sandalwood.png" alt="Sandalwood Candle" class="w-full h-80 object-cover group-hover:scale-102 transition duration-500">
+            </a>
+            <div>
+                <h3 class="serif text-xl tracking-wide uppercase font-medium">Sandalwood</h3>
+                <p class="text-xs text-stone-500 uppercase tracking-widest mb-4">Stack 7 OZ Candle</p>
+                <p class="text-sm text-stone-700 font-medium mb-4">$32.00</p>
+                <button class="w-full border border-stone-800 text-stone-800 text-xs tracking-widest uppercase font-medium py-3 hover:bg-stone-800 hover:text-white transition duration-300">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Golden Mandarin Candle -->
+        <div class="text-center flex flex-col justify-between">
+            <a href="/product/golden-mandarin" class="group block mb-4 overflow-hidden bg-stone-100">
+                <img src="/static/images/golden-mandarin.png" alt="Golden Mandarin Candle" class="w-full h-80 object-cover group-hover:scale-102 transition duration-500">
+            </a>
+            <div>
+                <h3 class="serif text-xl tracking-wide uppercase font-medium">Golden Mandarin</h3>
+                <p class="text-xs text-stone-500 uppercase tracking-widest mb-4">Stack 7 OZ Candle</p>
+                <p class="text-sm text-stone-700 font-medium mb-4">$28.00</p>
+                <button class="w-full border border-stone-800 text-stone-800 text-xs tracking-widest uppercase font-medium py-3 hover:bg-stone-800 hover:text-white transition duration-300">Add to Cart</button>
+            </div>
+        </div>
+
+    </div>
+    <div class="text-center mt-12">
+        <a href="#" class="inline-block text-xs tracking-widest uppercase border-b border-stone-800 font-semibold pb-1 hover:text-stone-500 hover:border-stone-500">Shop All</a>
+    </div>
+</section>
+
+<!-- Ingredient Feature Split Row -->
+<section class="grid grid-cols-1 md:grid-cols-2 bg-[#F6F3EE] items-center">
+    <div class="h-96 relative flex items-center justify-center bg-stone-300">
+        <img src="/static/images/soy-beans.avif" alt="Soy Beans" class="absolute inset-0 w-full h-full object-cover">
+        <h2 class="serif text-4xl text-white relative z-10 font-light italic">Our Ingredients</h2>
+    </div>
+    <div class="p-12 md:p-24 max-w-xl">
+        <h3 class="serif text-2xl font-medium uppercase tracking-wide mb-4">100% Natural Soy Wax</h3>
+        <p class="text-stone-600 font-light leading-relaxed text-sm">
+            Crafted with 100% natural soy wax, our candles are designed for a cleaner, more consistent burn. This premium wax blend enhances fragrance performance, extends burn time, and helps create a beautiful experience from first light to last.
+        </p>
+    </div>
+</section>
+
+<!-- Testimonials Carousel Section -->
+<section class="max-w-7xl mx-auto px-6 py-24 border-t border-stone-100">
+    <h2 class="serif text-2xl tracking-widest uppercase text-center font-medium mb-16">Testimonials</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <!-- Testimonial 1 -->
+        <div class="flex flex-col items-center text-center">
+            <img src="/static/images/user1.avif" alt="Jordan K." class="w-24 h-24 rounded-full object-cover mb-4 grayscale">
+            <p class="serif text-sm italic text-stone-600 max-w-xs mb-4">"I originally bought one as a gift and ended up keeping it for myself. The quality is incredible, and the scent fills my entire living room without ever feeling too strong."</p>
+            <h4 class="text-xs font-semibold uppercase tracking-widest text-stone-800">Jordan K., 38</h4>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="flex flex-col items-center text-center">
+            <img src="/static/images/user2.avif" alt="Emily R." class="w-24 h-24 rounded-full object-cover mb-4 grayscale">
+            <p class="serif text-sm italic text-stone-600 max-w-xs mb-4">"The Little Ritual candles have completely transformed my evenings. The scents are warm without being overwhelming, and lighting one has become my favorite way to unwind after a long day."</p>
+            <h4 class="text-xs font-semibold uppercase tracking-widest text-stone-800">Emily R., 24</h4>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="flex flex-col items-center text-center">
+            <img src="/static/images/user3.avif" alt="Madison T." class="w-24 h-24 rounded-full object-cover mb-4 grayscale">
+            <p class="serif text-sm italic text-stone-600 max-w-xs mb-4">"I've tried countless candle brands, and nothing compares to The Little Ritual. The fragrances feel elevated and cozy at the same time, and they burn beautifully from start to finish."</p>
+            <h4 class="text-xs font-semibold uppercase tracking-widest text-stone-800">Madison T., 26</h4>
+        </div>
+
+        <!-- Testimonial 4 -->
+        <div class="flex flex-col items-center text-center">
+            <img src="/static/images/user4.avif" alt="Sophie M." class="w-24 h-24 rounded-full object-cover mb-4 grayscale">
+            <p class="serif text-sm italic text-stone-600 max-w-xs mb-4">"Every scent feels thoughtfully crafted. From the packaging to the fragrance, The Little Ritual makes even the smallest moments at home feel special. I always have at least one burning."</p>
+            <h4 class="text-xs font-semibold uppercase tracking-widest text-stone-800">Sophie M., 22</h4>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
