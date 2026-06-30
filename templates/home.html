@@ -63,19 +63,109 @@
 </section>
 
 <!-- Ingredient Feature Split Row -->
-<section class="grid grid-cols-1 md:grid-cols-2 bg-[#F6F3EE] items-center">
-    <div class="h-96 relative flex items-center justify-center bg-stone-300">
-        <img src="/static/images/soy-beans.avif" alt="Soy Beans" class="absolute inset-0 w-full h-full object-cover">
-        <h2 class="serif text-4xl text-white relative z-10 font-light italic">Our Ingredients</h2>
+<section class="grid grid-cols-1 md:grid-cols-2 bg-[#F6F3EE] items-center overflow-hidden border-t border-b border-stone-200">
+    
+    <div class="h-[450px] relative bg-stone-300 overflow-hidden group">
+        
+        <div class="ingredient-slide absolute inset-0 opacity-100 transition-opacity duration-700 ease-in-out">
+            <img src="/static/images/soy-beans.avif" alt="Natural Soy Wax" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/15 flex items-center justify-center">
+                <h2 class="serif text-4xl text-white font-light italic tracking-wide">Our Ingredients</h2>
+            </div>
+        </div>
+
+        <div class="ingredient-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+            <img src="/static/images/fragrance-oils.avif" alt="Premium Fragrance Oils" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/15 flex items-center justify-center">
+                <h2 class="serif text-4xl text-white font-light italic tracking-wide">Our Process</h2>
+            </div>
+        </div>
+
+        <div class="ingredient-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+            <img src="/static/images/cotton-wicks.avif" alt="Cotton Wicks" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/15 flex items-center justify-center">
+                <h2 class="serif text-4xl text-white font-light italic tracking-wide">The Details</h2>
+            </div>
+        </div>
+
+        <div class="ingredient-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+            <img src="/static/images/small-batch.webp" alt="Small-Batch Craftsmanship" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/15 flex items-center justify-center">
+                <h2 class="serif text-4xl text-white font-light italic tracking-wide">Our Craft</h2>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 inset-x-0 z-20 flex items-center justify-between px-6 opacity-40 group-hover:opacity-90 transition-opacity duration-300">
+            <button onclick="changeSlide(-1)" class="text-white text-xs tracking-widest uppercase font-medium bg-black/10 hover:bg-black/30 backdrop-blur-xs px-3 py-1.5 rounded-xs transition">← Prev</button>
+            
+            <div class="flex space-x-2 bg-black/10 backdrop-blur-xs px-3 py-2 rounded-full">
+                <span class="indicator-dot w-1.5 h-1.5 rounded-full bg-white transition-all duration-300"></span>
+                <span class="indicator-dot w-1.5 h-1.5 rounded-full bg-white/40 transition-all duration-300"></span>
+                <span class="indicator-dot w-1.5 h-1.5 rounded-full bg-white/40 transition-all duration-300"></span>
+                <span class="indicator-dot w-1.5 h-1.5 rounded-full bg-white/40 transition-all duration-300"></span>
+            </div>
+            
+            <button onclick="changeSlide(1)" class="text-white text-xs tracking-widest uppercase font-medium bg-black/10 hover:bg-black/30 backdrop-blur-xs px-3 py-1.5 rounded-xs transition">Next →</button>
+        </div>
+
     </div>
-    <div class="p-12 md:p-24 max-w-xl">
-        <h3 class="serif text-2xl font-medium uppercase tracking-wide mb-4">100% Natural Soy Wax</h3>
-        <p class="text-stone-600 font-light leading-relaxed text-sm">
-            Crafted with 100% natural soy wax, our candles are designed for a cleaner, more consistent burn. This premium wax blend enhances fragrance performance, extends burn time, and helps create a beautiful experience from first light to last.
-        </p>
+
+    <div class="p-12 md:p-20 max-w-xl min-h-[350px] flex items-center">
+        
+        <div class="w-full">
+            <div class="ingredient-text block">
+                <h3 class="serif text-2xl font-medium uppercase tracking-wide mb-4 text-stone-900">Natural Soy Wax</h3>
+                <p class="text-stone-600 font-light leading-relaxed text-sm">
+                    We use 100% natural soy wax for a clean, even burn and long-lasting fragrance[cite: 27, 28, 252]. Made from renewable resources, it's the foundation of every candle we create[cite: 253].
+                </p>
+            </div>
+
+            <div class="ingredient-text hidden">
+                <h3 class="serif text-2xl font-medium uppercase tracking-wide mb-4 text-stone-900">Premium Fragrance Oils</h3>
+                <p class="text-stone-600 font-light leading-relaxed text-sm">
+                    Our carefully selected fragrance oils are blended to create scents that feel balanced, inviting, and memorable[cite: 254]. Each fragrance is designed to fill your space without overwhelming it[cite: 255].
+                </p>
+            </div>
+
+            <div class="ingredient-text hidden">
+                <h3 class="serif text-2xl font-medium uppercase tracking-wide mb-4 text-stone-900">Cotton Wicks</h3>
+                <p class="text-stone-600 font-light leading-relaxed text-sm">
+                    Every candle is made with high-quality cotton wicks that promote a consistent flame and an even burn, helping you enjoy every candle from first light to last[cite: 256].
+                </p>
+            </div>
+
+            <div class="ingredient-text hidden">
+                <h3 class="serif text-2xl font-medium uppercase tracking-wide mb-4 text-stone-900">Small-Batch Craftsmanship</h3>
+                <p class="text-stone-600 font-light leading-relaxed text-sm">
+                    Each candle is made in small batches to ensure quality, consistency, and attention to detail[cite: 257]. It's our way of creating products that feel as special as the moments they're made for[cite: 258].
+                </p>
+            </div>
+        </div>
+
     </div>
 </section>
 
+<script>
+    let currentSlideIndex = 0;
+    const slides = document.querySelectorAll('.ingredient-slide');
+    const texts = document.querySelectorAll('.ingredient-text');
+    const dots = document.querySelectorAll('.indicator-dot');
+
+    function changeSlide(direction) {
+        // Fade out/hide old indices
+        slides[currentSlideIndex].classList.replace('opacity-100', 'opacity-0');
+        texts[currentSlideIndex].classList.replace('block', 'hidden');
+        dots[currentSlideIndex].classList.replace('bg-white', 'bg-white/40');
+
+        // Roll index dynamically around length limits
+        currentSlideIndex = (currentSlideIndex + direction + slides.length) % slides.length;
+
+        // Fade in/show new indices
+        slides[currentSlideIndex].classList.replace('opacity-0', 'opacity-100');
+        texts[currentSlideIndex].classList.replace('hidden', 'block');
+        dots[currentSlideIndex].classList.replace('bg-white/40', 'bg-white');
+    }
+</script>
 <!-- Testimonials Carousel Section -->
 <section class="max-w-7xl mx-auto px-6 py-24 border-t border-stone-100">
     <h2 class="serif text-2xl tracking-widest uppercase text-center font-medium mb-16">Testimonials</h2>
@@ -83,28 +173,28 @@
         
         <!-- Testimonial 1 -->
         <div class="flex flex-col items-center text-center">
-            <img src="/static/images/user1.avif" alt="Jordan K." class="w-24 h-24 rounded-full object-cover mb-4 grayscale">
+            <img src="/static/images/user1.avif" alt="Jordan K." class="w-24 h-24 rounded-full object-cover mb-4 shadow-xs">
             <p class="serif text-sm italic text-stone-600 max-w-xs mb-4">"I originally bought one as a gift and ended up keeping it for myself. The quality is incredible, and the scent fills my entire living room without ever feeling too strong."</p>
             <h4 class="text-xs font-semibold uppercase tracking-widest text-stone-800">Jordan K., 38</h4>
         </div>
 
         <!-- Testimonial 2 -->
         <div class="flex flex-col items-center text-center">
-            <img src="/static/images/user2.avif" alt="Emily R." class="w-24 h-24 rounded-full object-cover mb-4 grayscale">
+            <img src="/static/images/user2.avif" alt="Emily R." class="w-24 h-24 rounded-full object-cover mb-4 shadow-xs">
             <p class="serif text-sm italic text-stone-600 max-w-xs mb-4">"The Little Ritual candles have completely transformed my evenings. The scents are warm without being overwhelming, and lighting one has become my favorite way to unwind after a long day."</p>
             <h4 class="text-xs font-semibold uppercase tracking-widest text-stone-800">Emily R., 24</h4>
         </div>
 
         <!-- Testimonial 3 -->
         <div class="flex flex-col items-center text-center">
-            <img src="/static/images/user3.avif" alt="Madison T." class="w-24 h-24 rounded-full object-cover mb-4 grayscale">
+            <img src="/static/images/user3.avif" alt="Madison T." class="w-24 h-24 rounded-full object-cover mb-4 shadow-xs">
             <p class="serif text-sm italic text-stone-600 max-w-xs mb-4">"I've tried countless candle brands, and nothing compares to The Little Ritual. The fragrances feel elevated and cozy at the same time, and they burn beautifully from start to finish."</p>
             <h4 class="text-xs font-semibold uppercase tracking-widest text-stone-800">Madison T., 26</h4>
         </div>
 
         <!-- Testimonial 4 -->
         <div class="flex flex-col items-center text-center">
-            <img src="/static/images/user4.avif" alt="Sophie M." class="w-24 h-24 rounded-full object-cover mb-4 grayscale">
+            <img src="/static/images/user4.avif" alt="Sophie M." class="w-24 h-24 rounded-full object-cover mb-4 shadow-xs">
             <p class="serif text-sm italic text-stone-600 max-w-xs mb-4">"Every scent feels thoughtfully crafted. From the packaging to the fragrance, The Little Ritual makes even the smallest moments at home feel special. I always have at least one burning."</p>
             <h4 class="text-xs font-semibold uppercase tracking-widest text-stone-800">Sophie M., 22</h4>
         </div>
