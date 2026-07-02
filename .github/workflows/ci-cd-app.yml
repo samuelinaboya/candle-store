@@ -1,0 +1,50 @@
+name: Build and Trigger Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  PROJECT_ID: "your-gcp-project-id"
+  REGION: "us-central1"
+  GAR_REPO: "my-artifact-registry"
+  IMAGE_NAME: "my-app"
+
+jobs:
+  build-and-signal:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      id-token: 'write' # Required for Workload Identity Federation
+
+    steps:
+    - name: Checkout Application Code
+      uses: actions/checkout@v4
+
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v2
+      with:
+        workload_identity_provider: 'projects/YOUR_PROJECT_NUMBER/locations/global/workloadIdentityPools/YOUR_POOL/providers/YOUR_PROVIDER'
+        service_account: 'github-actions-app-sa@your-gcp-project-id.iam.gserviceaccount.com'
+
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@v2
+
+    - name: Configure Docker for Artifact Registry
+      run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
+
+    - name: Build and Push Docker Container
+      run: |
+        IMAGE_URL="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.GAR_REPO }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"
+        docker build -t $IMAGE_URL .
+        docker push $IMAGE_URL
+
+    # THE HANDSHAKE: Signal the Infrastructure Repo
+    - name: Trigger Infrastructure Pipeline
+      uses: peter-evans/repository-dispatch@v3
+      with:
+        token: ${{ secrets.INFRA_REPO_ACCESS_TOKEN }} # Fine-grained GitHub PAT
+        repository: your-github-username/infra-repo
+        event-type: deploy-triggered-by-app
+        client-payload: '{"image_tag": "${{ github.sha }}"}'
