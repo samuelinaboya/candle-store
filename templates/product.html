@@ -47,27 +47,67 @@
                 </button>
             </form>
 
-            <div class="border-t border-stone-200">
-                <div class="border-b border-stone-200 py-4 flex justify-between items-center cursor-pointer hover:text-stone-500 transition group">
-                    <span class="text-xs tracking-widest uppercase font-medium">How to Use It</span>
-                    <span class="text-sm transition transform group-hover:translate-y-0.5">⌄</span>
+            <div class="border-t border-stone-200 text-stone-800">
+                
+                <div class="border-b border-stone-200">
+                    <button onclick="toggleAccordion('how-to-use', 'arrow-1')" class="w-full py-4 flex justify-between items-center text-left hover:text-stone-500 transition focus:outline-none group">
+                        <span class="text-xs tracking-widest uppercase font-medium">How to Use It</span>
+                        <span id="arrow-1" class="text-sm transition-transform duration-300 transform group-hover:translate-y-0.5">⌄</span>
+                    </button>
+                    <div id="how-to-use" class="hidden pb-6 text-sm text-stone-600 font-light leading-relaxed">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </div>
                 </div>
-                <div class="border-b border-stone-200 py-4 flex justify-between items-center cursor-pointer hover:text-stone-500 transition group">
-                    <span class="text-xs tracking-widest uppercase font-medium">Ingredients</span>
-                    <span class="text-sm transition transform group-hover:translate-y-0.5">⌄</span>
+
+                <div class="border-b border-stone-200">
+                    <button onclick="toggleAccordion('ingredients', 'arrow-2')" class="w-full py-4 flex justify-between items-center text-left hover:text-stone-500 transition focus:outline-none group">
+                        <span class="text-xs tracking-widest uppercase font-medium">Ingredients</span>
+                        <span id="arrow-2" class="text-sm transition-transform duration-300 transform group-hover:translate-y-0.5">⌄</span>
+                    </button>
+                    <div id="ingredients" class="hidden pb-6 text-sm text-stone-600 font-light leading-relaxed">
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </div>
                 </div>
-                <div class="border-b border-stone-200 py-4 flex justify-between items-center cursor-pointer hover:text-stone-500 transition group">
-                    <span class="text-xs tracking-widest uppercase font-medium">Aroma</span>
-                    <span class="text-sm transition transform group-hover:translate-y-0.5">⌄</span>
+
+                <div class="border-b border-stone-200">
+                    <button onclick="toggleAccordion('aroma', 'arrow-3')" class="w-full py-4 flex justify-between items-center text-left hover:text-stone-500 transition focus:outline-none group">
+                        <span class="text-xs tracking-widest uppercase font-medium">Aroma</span>
+                        <span id="arrow-3" class="text-sm transition-transform duration-300 transform group-hover:translate-y-0.5">⌄</span>
+                    </button>
+                    <div id="aroma" class="hidden pb-6 text-sm text-stone-600 font-light leading-relaxed">
+                        Mollis pretium lorem primis iaculis cut. Tellus habitant curabitur nec scelerisque tincidunt. Cubilia congue magna eleifend curae platea per senectus sed sociosqu hac varius ridiculus torquent rhoncus aliquet.
+                    </div>
                 </div>
-                <div class="border-b border-stone-200 py-4 flex justify-between items-center cursor-pointer hover:text-stone-500 transition group">
-                    <span class="text-xs tracking-widest uppercase font-medium">Reviews</span>
-                    <span class="text-sm transition transform group-hover:translate-y-0.5">⌄</span>
+
+                <div class="border-b border-stone-200">
+                    <button onclick="toggleAccordion('reviews', 'arrow-4')" class="w-full py-4 flex justify-between items-center text-left hover:text-stone-500 transition focus:outline-none group">
+                        <span class="text-xs tracking-widest uppercase font-medium">Reviews</span>
+                        <span id="arrow-4" class="text-sm transition-transform duration-300 transform group-hover:translate-y-0.5">⌄</span>
+                    </button>
+                    <div id="reviews" class="hidden pb-6 text-sm text-stone-600 font-light leading-relaxed">
+                        Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.
+                    </div>
                 </div>
+
             </div>
         </div>
 
     </div>
 </section>
+
+<script>
+    function toggleAccordion(panelId, arrowId) {
+        const panel = document.getElementById(panelId);
+        const arrow = document.getElementById(arrowId);
+        
+        if (panel.classList.contains('hidden')) {
+            panel.classList.remove('hidden');
+            arrow.classList.add('rotate-180');
+        } else {
+            panel.classList.add('hidden');
+            arrow.classList.remove('rotate-180');
+        }
+    }
+</script>
 
 {% endblock %}
