@@ -6,10 +6,10 @@ on:
       - main
 
 env:
-  PROJECT_ID: "your-gcp-project-id"
+  PROJECT_ID: "candle-store-501218"
   REGION: "us-central1"
-  GAR_REPO: "my-artifact-registry"
-  IMAGE_NAME: "my-app"
+  GAR_REPO: "candle-store-registry"
+  IMAGE_NAME: "candle-store-app"
 
 jobs:
   build-and-signal:
@@ -22,11 +22,12 @@ jobs:
     - name: Checkout Application Code
       uses: actions/checkout@v4
 
+    # Tokenless OIDC Login using your dedicated Application Service Account
     - name: Authenticate to Google Cloud
       uses: google-github-actions/auth@v2
       with:
-        workload_identity_provider: 'projects/YOUR_PROJECT_NUMBER/locations/global/workloadIdentityPools/YOUR_POOL/providers/YOUR_PROVIDER'
-        service_account: 'github-actions-app-sa@your-gcp-project-id.iam.gserviceaccount.com'
+        workload_identity_provider: 'projects/993788111526/locations/global/workloadIdentityPools/github-pool/providers/github-provider'
+        service_account: 'gh-auto-sa@candle-store-501218.iam.gserviceaccount.com'
 
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v2
@@ -34,17 +35,18 @@ jobs:
     - name: Configure Docker for Artifact Registry
       run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
 
+    # Builds and pushes container using the unique Git Commit SHA as the version tag
     - name: Build and Push Docker Container
       run: |
         IMAGE_URL="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.GAR_REPO }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"
         docker build -t $IMAGE_URL .
         docker push $IMAGE_URL
 
-    # THE HANDSHAKE: Signal the Infrastructure Repo
+    # THE HANDSHAKE: Signals your candle-store-TF repo that a new image is ready
     - name: Trigger Infrastructure Pipeline
       uses: peter-evans/repository-dispatch@v3
       with:
         token: ${{ secrets.INFRA_REPO_ACCESS_TOKEN }} # Fine-grained GitHub PAT
-        repository: your-github-username/infra-repo
+        repository: samuelinaboya/candle-store-TF
         event-type: deploy-triggered-by-app
         client-payload: '{"image_tag": "${{ github.sha }}"}'
