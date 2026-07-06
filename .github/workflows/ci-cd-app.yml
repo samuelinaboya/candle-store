@@ -7,7 +7,7 @@ on:
 
 env:
   PROJECT_ID: "candle-store-501218"
-  REGION: "us-central1"
+  REGION: "us-east4"
   GAR_REPO: "candle-store-registry"
   IMAGE_NAME: "candle-store-app"
 
